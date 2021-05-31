@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unresolved, import/extensions */
-import React, {PureComponent} from 'react';
-import {Animated, Easing, PanResponder, StyleSheet, View, ViewPropTypes} from 'react-native';
-import {PropTypes} from 'prop-types';
+import { PropTypes } from 'prop-types';
+import React, { PureComponent } from 'react';
+import { Animated, Easing, PanResponder, StyleSheet, View, ViewPropTypes } from 'react-native';
 /* eslint-enable import/no-unresolved, import/extensions */
 
 function noop() {}
@@ -146,7 +146,7 @@ export default class Swipeable extends PureComponent {
       toValue: {x: 0, y: 0},
       duration: 250,
       easing: Easing.elastic(0.5),
-      useNativeDriver: false
+      useNativeDriver: true
     },
 
     // misc
@@ -167,9 +167,9 @@ export default class Swipeable extends PureComponent {
     rightButtonsOpen: false
   };
 
-  componentDidMount() {
+   constructor(props) {
+    super(props);
     const {onPanAnimatedValueRef, onRef} = this.props;
-
     onRef(this);
     onPanAnimatedValueRef(this.state.pan);
   }
@@ -205,7 +205,7 @@ export default class Swipeable extends PureComponent {
   _handlePan = Animated.event([null, {
     dx: this.state.pan.x,
     dy: this.state.pan.y,
-  }], {useNativeDriver: false});
+  }], {useNativeDriver: true});
 
   _handleMoveShouldSetPanResponder = (event, gestureState) => (
     Math.abs(gestureState.dx) > this.props.swipeStartMinDistance
