@@ -57,6 +57,14 @@ function MyListItem() {
 
 ### Instance Methods
 
+#### openLeft(onDone)
+
+Programmatically open the left component. `onDone` is an optional callback.
+
+#### openRight(onDone)
+
+Programmatically open the right component. `onDone` is an optional callback.
+
 #### recenter()
 
 Imperatively reset swipeable component back to initial position.  This is useful if buttons are exposed and the user has begun scrolling the parent view.
